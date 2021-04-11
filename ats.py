@@ -53,6 +53,7 @@ if(ord(s[8]) == 0):
 else:
     src_curr = "B"
 
+sw_stat = ord(s[10])
 
 print "A Input Voltage " + str(voltage_a)
 print "A Input Freq " + str(freq_a)
@@ -72,4 +73,25 @@ print "Software Version " + str(swver)
 
 print "Preferred Source " + src_pref
 print "Working Source " + src_curr
+
+print "Switch Status " + str(sw_stat) #SW_STATUS: bit 1 - Source A, bit 0 - Source B, bit 2 - Output
+
+if(sw_stat & 0x2):
+    swa_stat = "On"
+else:
+    swa_stat = "Off"
+
+if(sw_stat & 0x1):
+    swb_stat = "On"
+else:
+    swb_stat = "Off"
+
+if(sw_stat & 0x4):
+    swo_stat = "On"
+else:
+    swo_stat = "Off"
+
+print "Switch A status: " + swa_stat
+print "Switch B status: " + swb_stat
+print "Switch Output status: " + swo_stat
 
